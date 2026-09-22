@@ -1,0 +1,1048 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #17324d;
+    background: #ffffff;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    width: 100%;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+
+    background: #ffffff;
+    border-bottom: 1px solid #e8eef2;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.logo h1 {
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #0b3655;
+}
+
+.logo span {
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #0f7180;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav a {
+    color: #17324d;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: #0f7180;
+}
+
+.header-button {
+    background: #0b3655;
+    color: #ffffff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    white-space: nowrap;
+    transition: 0.3s ease;
+}
+
+.header-button:hover {
+    background: #0f7180;
+}
+
+
+ /* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 650px;
+    padding: 100px 8%;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(5, 25, 38, 0.82),
+            rgba(5, 25, 38, 0.45),
+            rgba(5, 25, 38, 0.15)
+        ),
+        url("images/hero.jpg");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    right: -120px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 60px rgba(255, 255, 255, 0.025),
+        0 0 0 120px rgba(255, 255, 255, 0.02);
+
+    pointer-events: none;
+}
+
+.hero-content {
+    max-width: 680px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.eyebrow {
+    color: #8dd8e8;
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+
+    margin-bottom: 22px;
+}
+
+.hero h2 {
+    color: #ffffff;
+
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 1.05;
+
+    margin-bottom: 25px;
+}
+
+.hero p:not(.eyebrow) {
+    color: #d7e8ef;
+
+    font-size: 18px;
+    line-height: 1.8;
+
+    max-width: 600px;
+
+    margin-bottom: 35px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons a {
+    display: inline-block;
+
+    padding: 15px 28px;
+
+    border-radius: 6px;
+
+    text-decoration: none;
+    font-weight: 700;
+
+    transition: 0.3s ease;
+}
+
+.hero-buttons a:first-child {
+    background: #ffffff;
+    color: #0b2d4a;
+}
+
+.hero-buttons a:first-child:hover {
+    background: #8dd8e8;
+    transform: translateY(-3px);
+}
+
+.hero-buttons a:last-child {
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.hero-buttons a:last-child:hover {
+    background: #ffffff;
+    color: #0b2d4a;
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.services {
+    padding: 90px 7%;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+
+    background: #f5f9fb;
+}
+
+.service {
+    padding: 35px 28px;
+
+    background: #ffffff;
+
+    border: 1px solid #e3edf2;
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+}
+
+.service:hover {
+    transform: translateY(-8px);
+
+    border-color: #8dd8e8;
+
+    box-shadow:
+        0 15px 35px rgba(11, 54, 85, 0.10);
+}
+
+.service h3 {
+    margin-bottom: 12px;
+
+    color: #0b3655;
+    font-size: 20px;
+}
+
+.service p {
+    color: #617483;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 50px;
+
+    text-align: center;
+}
+
+.section-heading > p:first-child {
+    color: #0f7180;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.section-heading h2 {
+    color: #17324d;
+
+    font-size: 42px;
+    line-height: 1.2;
+
+    margin-bottom: 15px;
+}
+
+.section-heading p:last-child {
+    color: #667985;
+}
+
+
+/* =========================
+   DOCTORS
+========================= */
+
+.doctors {
+    padding: 100px 7%;
+    background: #ffffff;
+}
+
+.doctor-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+}
+
+.doctor-card {
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border: 1px solid #e1ebef;
+    border-radius: 12px;
+
+    transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.doctor-card:hover {
+    transform: translateY(-8px);
+
+    border-color: #8dd8e8;
+
+    box-shadow:
+        0 18px 40px rgba(11, 54, 85, 0.12);
+}
+
+.doctor-card img {
+    width: 100%;
+    height: 330px;
+
+    display: block;
+
+    object-fit: cover;
+
+    background: #dce8ed;
+}
+
+.doctor-info {
+    padding: 22px;
+}
+
+.doctor-info h3 {
+    color: #17324d;
+
+    font-size: 21px;
+
+    margin-bottom: 5px;
+}
+
+.doctor-info p {
+    color: #0f7180;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   APPOINTMENT
+========================= */
+.appointment select {
+    width: 100%;
+
+    padding: 15px 16px;
+    margin-bottom: 22px;
+
+    border: 1px solid #ccdbe2;
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    color: #17324d;
+    font-size: 15px;
+
+    cursor: pointer;
+}
+
+.appointment select:focus {
+    outline: none;
+
+    border-color: #0f7180;
+
+    box-shadow:
+        0 0 0 3px rgba(15, 113, 128, 0.10);
+}
+.appointment {
+    padding: 100px 7%;
+    background: #f5f9fb;
+}
+
+.appointment form {
+    max-width: 700px;
+    margin: 0 auto;
+
+    padding: 45px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1ebef;
+    border-radius: 12px;
+
+    box-shadow:
+        0 15px 40px rgba(11, 54, 85, 0.08);
+}
+
+.appointment label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #17324d;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.appointment input {
+    width: 100%;
+
+    padding: 15px 16px;
+    margin-bottom: 22px;
+
+    border: 1px solid #ccdbe2;
+    border-radius: 6px;
+
+    background: #ffffff;
+
+    color: #17324d;
+    font-size: 15px;
+
+    transition: 0.2s ease;
+}
+
+.appointment input:focus {
+    outline: none;
+
+    border-color: #0f7180;
+
+    box-shadow:
+        0 0 0 3px rgba(15, 113, 128, 0.10);
+}
+
+.appointment button {
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+    border-radius: 6px;
+
+    background: #0b3655;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.appointment button:hover {
+    background: #0f7180;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about {
+    padding: 100px 7%;
+    background: #ffffff;
+}
+
+.about-content {
+    max-width: 1150px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 70px;
+
+    align-items: center;
+}
+
+.about-text {
+    max-width: 650px;
+}
+
+.about-label {
+    color: #0f7180;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 12px;
+}
+
+.about-text h2 {
+    color: #17324d;
+
+    font-size: 48px;
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+.about-text p:not(.about-label) {
+    color: #617483;
+
+    font-size: 16px;
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+}
+
+.about-button {
+    display: inline-block;
+
+    margin-top: 15px;
+    padding: 14px 24px;
+
+    background: #0b3655;
+    color: #ffffff;
+
+    text-decoration: none;
+    font-weight: 700;
+
+    border-radius: 6px;
+
+    transition: 0.3s ease;
+}
+
+.about-button:hover {
+    background: #0f7180;
+    transform: translateY(-3px);
+}
+
+.about-box {
+    display: grid;
+    gap: 18px;
+}
+
+.about-stat {
+    padding: 30px;
+
+    background: #f5f9fb;
+
+    border: 1px solid #e1ebef;
+    border-radius: 10px;
+
+    transition: 0.3s ease;
+}
+
+.about-stat:hover {
+    transform: translateX(6px);
+
+    border-color: #8dd8e8;
+}
+
+.about-stat strong {
+    display: block;
+
+    color: #0b3655;
+
+    font-size: 36px;
+    line-height: 1;
+
+    margin-bottom: 8px;
+}
+
+.about-stat span {
+    color: #617483;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact {
+    padding: 100px 7%;
+
+    text-align: center;
+
+    background: #f5f9fb;
+}
+
+.contact-grid {
+    max-width: 1000px;
+    margin: 0 auto 50px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.contact-card {
+    padding: 35px 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #e1ebef;
+    border-radius: 10px;
+
+    text-align: center;
+
+    transition: 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+
+    border-color: #8dd8e8;
+
+    box-shadow:
+        0 15px 30px rgba(11, 54, 85, 0.08);
+}
+
+.contact-icon {
+    display: block;
+
+    font-size: 28px;
+
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    color: #17324d;
+    margin-bottom: 8px;
+}
+
+.contact-card p {
+    color: #617483;
+}
+
+.contact-cta {
+    max-width: 800px;
+    margin: 0 auto;
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    background: #0b3655;
+
+    border-radius: 12px;
+}
+
+.contact-cta h3 {
+    color: #ffffff;
+
+    font-size: 28px;
+
+    margin-bottom: 10px;
+}
+
+.contact-cta p {
+    color: #d7e8ef;
+
+    margin-bottom: 25px;
+}
+
+.contact-cta a {
+    display: inline-block;
+
+    padding: 13px 24px;
+
+    background: #ffffff;
+    color: #0b3655;
+
+    text-decoration: none;
+    font-weight: 700;
+
+    border-radius: 6px;
+
+    transition: 0.3s ease;
+}
+
+.contact-cta a:hover {
+    background: #8dd8e8;
+    transform: translateY(-2px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 30px 7%;
+
+    text-align: center;
+
+    background: #071f35;
+    color: #b9ccd5;
+
+    font-size: 14px;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+    header {
+        padding: 18px 5%;
+    }
+
+    nav {
+        gap: 18px;
+    }
+
+    .services {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .doctor-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-content {
+        gap: 40px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    /* HEADER */
+
+    header {
+        padding: 18px 5%;
+
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .logo {
+        text-align: center;
+    }
+
+    nav {
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 10px 16px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .header-button {
+        width: 100%;
+
+        text-align: center;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: auto;
+
+        padding: 75px 6%;
+    }
+
+    .hero::after {
+        width: 300px;
+        height: 300px;
+
+        right: -180px;
+    }
+
+    .hero h2 {
+        font-size: 42px;
+    }
+
+    .hero p:not(.eyebrow) {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* SERVICES */
+
+    .services {
+        grid-template-columns: 1fr;
+
+        padding: 60px 6%;
+
+        gap: 18px;
+    }
+
+    .service {
+        padding: 28px 22px;
+    }
+
+
+    /* SECTION HEADINGS */
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+    .section-heading h2 {
+        font-size: 34px;
+    }
+
+
+    /* DOCTORS */
+
+    .doctors {
+        padding: 70px 6%;
+    }
+
+    .doctor-grid {
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+    }
+
+    .doctor-card img {
+        height: 350px;
+    }
+
+
+    /* APPOINTMENT */
+
+    .appointment {
+        padding: 70px 6%;
+    }
+
+    .appointment form {
+        padding: 25px 20px;
+    }
+
+
+    /* ABOUT */
+
+    .about {
+        padding: 70px 6%;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+    .about-text h2 {
+        font-size: 36px;
+    }
+
+    .about-stat {
+        padding: 25px;
+    }
+
+
+    /* CONTACT */
+
+    .contact {
+        padding: 70px 6%;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .contact-cta {
+        padding: 35px 20px;
+    }
+
+    .contact-cta h3 {
+        font-size: 24px;
+    }
+
+
+    /* FOOTER */
+
+    footer {
+        padding: 25px 6%;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media (max-width: 400px) {
+
+    .hero h2 {
+        font-size: 36px;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .doctor-card img {
+        height: 300px;
+    }
+
+}
+.form-message {
+    margin-top: 20px;
+    padding: 14px 18px;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    text-align: center;
+
+    display: none;
+}
+
+.form-message.success {
+    display: block;
+
+    background: #e8f7f1;
+    color: #176b4d;
+    border: 1px solid #b7e4d1;
+}
+
+.form-message.error {
+    display: block;
+
+    background: #fff0f0;
+    color: #a33a3a;
+    border: 1px solid #f0c1c1;
+}
+.form-message {
+    margin-top: 20px;
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    display: none;
+}
+
+.form-message.success {
+    display: block;
+    background: #e8f7f1;
+    color: #176b4d;
+    border: 1px solid #b7e4d1;
+}
+
+.form-message.error {
+    display: block;
+    background: #fff0f0;
+    color: #a33a3a;
+    border: 1px solid #f0c1c1;
+}
+/* =========================
+   APPOINTMENT FORM MESSAGE
+   ========================= */
+
+.form-message {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px 18px;
+
+    border-radius: 6px;
+
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    text-align: center;
+}
+
+.form-message.success {
+    background: #e8f7f1;
+    color: #176b4d;
+    border: 1px solid #b7e4d1;
+}
+
+.form-message.error {
+    background: #fff0f0;
+    color: #a33a3a;
+    border: 1px solid #f0c1c1;
+}
