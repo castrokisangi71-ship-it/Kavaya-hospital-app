@@ -1,28 +1,37 @@
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-import json
 import os
+import psycopg
 
 app = Flask(__name__)
 CORS(app)
 
-APPOINTMENTS_FILE = "appointments.json"
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
 
-def save_appointment(appointment):
-    appointments = []
+def get_connection():
+    if not DATABASE_URL:
+        raise RuntimeError("DATABASE_URL is not configured.")
+    return psycopg.connect(DATABASE_URL)
 
-    if os.path.exists(APPOINTMENTS_FILE):
-        with open(APPOINTMENTS_FILE, "r") as file:
-            try:
-                appointments = json.load(file)
-            except json.JSONDecodeError:
-                appointments = []
 
-    appointments.append(appointment)
-
-    with open(APPOINTMENTS_FILE, "w") as file:
-        json.dump(appointments, file, indent=4)
+def create_table():
+    with get_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS appointments (
+                    id BIGSERIAL PRIMARY KEY,
+                    name TEXT NOT NULL,
+                    email TEXT NOT NULL,
+                    phone TEXT NOT NULL,
+                    department TEXT NOT NULL,
+                    doctor TEXT NOT NULL,
+                    appointment_date DATE NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            """)
+        conn.commit()
 
 
 @app.route("/")
@@ -49,7 +58,21 @@ def book_appointment():
         "date": data.get("date")
     }
 
-    save_appointment(appointment)
+    with get_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                INSERT INTO appointments
+                (name, email, phone, department, doctor, appointment_date)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (
+                appointment["name"],
+                appointment["email"],
+                appointment["phone"],
+                appointment["department"],
+                appointment["doctor"],
+                appointment["date"]
+            ))
+        conn.commit()
 
     return jsonify({
         "success": True,
@@ -58,4 +81,7 @@ def book_appointment():
 
 
 if __name__ == "__main__":
+    create_table()
     app.run(debug=True)
+else:
+    create_table()

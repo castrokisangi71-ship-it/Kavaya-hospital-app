@@ -94,5 +94,13 @@
         "department": "surgery",
         "doctor": "brian",
         "date": "2026-12-12"
+    },
+    {
+        "name": "Castro Kisangi",
+        "email": "castrokisangi71@gmail.com",
+        "phone": "93966134",
+        "department": "pediatrics",
+        "doctor": "mercy",
+        "date": "2026-12-12"
     }
 ]
