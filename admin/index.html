@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kavaya Hospital | Admin Dashboard</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <header class="admin-header">
+        <div>
+            <p class="eyebrow">KAVAYA HOSPITAL</p>
+            <h1>Admin Dashboard</h1>
+        </div>
+
+        <div class="admin-status">
+            <span class="status-dot"></span>
+            System Online
+        </div>
+    </header>
+
+
+    <main class="admin-container">
+
+        <section class="dashboard-intro">
+            <div>
+                <p class="eyebrow">APPOINTMENTS</p>
+                <h2>Patient Appointments</h2>
+                <p>
+                    View and manage upcoming appointments submitted
+                    through the Kavaya Hospital website.
+                </p>
+            </div>
+
+            <div class="appointment-count">
+                <span id="appointmentCount">0</span>
+                <small>Total Appointments</small>
+            </div>
+        </section>
+
+
+        <section class="appointments-card">
+
+            <div class="card-header">
+                <h3>Recent Appointments</h3>
+
+                <button id="refreshBtn">
+                    Refresh
+                </button>
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Patient</th>
+                            <th>Phone</th>
+                            <th>Department</th>
+                            <th>Doctor</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="appointmentsTable">
+
+                        <tr>
+                            <td colspan="5" class="loading">
+                                Loading appointments...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="admin.js"></script>
+
+</body>
+</html>

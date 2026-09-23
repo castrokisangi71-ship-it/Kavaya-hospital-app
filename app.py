@@ -1,12 +1,13 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, send_from_directory, session
 from flask_cors import CORS
 import os
+import secrets
 import psycopg
 
 app = Flask(__name__)
 CORS(app)
-
-
+ADMIN_KEY = os.environ.get("ADMIN_KEY")
+app.secret_key = SECRET_KEY
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
 
@@ -33,7 +34,71 @@ def create_table():
             """)
         conn.commit()
 
+@app.route("/admin-login", methods=["POST"])
+def admin_login():
+    data = request.get_json() or {}
+    key = data.get("key")
 
+    if not ADMIN_KEY:
+        return jsonify({
+            "success": False,
+            "message": "Admin key is not configured."
+        }), 500
+
+    if not secrets.compare_digest(key or "", ADMIN_KEY):
+        return jsonify({
+            "success": False,
+            "message": "Invalid admin key."
+        }), 401
+
+    session["admin_authenticated"] = True
+
+    return jsonify({
+        "success": True,
+        "message": "Admin login successful."
+    })
+@app.route("/admin/appointments", methods=["GET"])
+def get_appointments():
+    if not session.get("admin_authenticated"):
+        return jsonify({
+            "success": False,
+            "message": "Unauthorized."
+        }), 401
+
+    with get_connection() as conn:
+        with conn.cursor() as cursor:
+            cursor.execute("""
+                SELECT
+                    id,
+                    name,
+                    email,
+                    phone,
+                    department,
+                    doctor,
+                    appointment_date
+                FROM appointments
+                ORDER BY appointment_date ASC, id DESC
+            """)
+
+            rows = cursor.fetchall()
+
+    appointments = []
+
+    for row in rows:
+        appointments.append({
+            "id": row[0],
+            "name": row[1],
+            "email": row[2],
+            "phone": row[3],
+            "department": row[4],
+            "doctor": row[5],
+            "date": str(row[6])
+        })
+
+    return jsonify({
+        "success": True,
+        "appointments": appointments
+    })
 @app.route("/")
 def home():
     return send_from_directory(".", "index.html")
